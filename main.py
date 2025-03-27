@@ -5,27 +5,36 @@ from dotenv import load_dotenv
 import os
 import time
 
-load_dotenv() #import .env file contents
+"""
+TODO
+add long wait (WebDriver Explicit Wait) here bc login times are atrocious
+add helper functions to organize different tasks
+    try to keep entire python script within one .py file
+    
+"""
 
-username = os.getenv("USERINFO")
-password = os.getenv("PASSWORD")
-url = os.getenv("URL")
+def main():
+    load_dotenv() #import .env file contents
 
-driver = webdriver.Chrome()
+    username = os.getenv("USERINFO")
+    password = os.getenv("PASSWORD")
+    url = os.getenv("URL")
 
-driver.get(url)
+    driver = webdriver.Chrome()
 
-time.sleep(5) #wait until elements are loaded on page (CHANGE TO WebDriverWait in future)
+    driver.get(url)
 
-#grab login/password login boxes via XPATH
-username_field = driver.find_element(By.XPATH, '//*[@id="uid"]') 
-password_field = driver.find_element(By.XPATH, '/html/body/div[1]/div[3]/div/div[1]/div[2]/form/div[4]/input') #had to use full XPATH bc shortened was not working
+    time.sleep(5) #wait until elements are loaded on page (CHANGE TO WebDriverWait in future)
 
-username_field.send_keys(username)
-password_field.send_keys(password)
+    #grab login/password login boxes via XPATH
+    username_field = driver.find_element(By.XPATH, '//*[@id="uid"]') 
+    password_field = driver.find_element(By.XPATH, '/html/body/div[1]/div[3]/div/div[1]/div[2]/form/div[4]/input') #had to use full XPATH bc shortened was not working
 
-login_button = driver.find_element(By.XPATH, '//*[@id="submit_button"]')
-login_button.click()
+    username_field.send_keys(username)
+    password_field.send_keys(password)
 
-#add long wait (WebDriver Explicit Wait) here bc login times are atrocious
+    login_button = driver.find_element(By.XPATH, '//*[@id="submit_button"]')
+    login_button.click()
 
+if __name__ == "__main__":
+    main()
