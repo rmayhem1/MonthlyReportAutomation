@@ -1,1 +1,5 @@
 .env
+master.xlsx
+data_raw/
+data_processed/
+venv/
