@@ -1,5 +1,19 @@
-.env
-master.xlsx
+# Virtual Environment
+venv/
+
+# Data Folders
 data_raw/
 data_processed/
-venv/
+
+# Sensitive Credentials
+.env 
+
+# Python Cache
+__pycache__/
+*.pyc 
+
+# Excel
+*.xlsx~
+
+# Logs
+*.log 
